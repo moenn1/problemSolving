@@ -57,7 +57,7 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
     }
 }
 
-// Complete the mergeLists function below.
+// Complete the has_cycle function below.
 
 /*
  * For your reference:
@@ -68,29 +68,6 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
  * };
  *
  */
-SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
-    if(head1 == nullptr) return head2;
-    if(head2 == nullptr) return head1;
-    SinglyLinkedList *newHead = new SinglyLinkedList();
-    SinglyLinkedListNode *tmp1 = head1, *tmp2 = head2;
-    while(tmp1!=nullptr && tmp2!=nullptr){
-        if(tmp1->data<tmp2->data){
-            newHead->insert_node(tmp1->data);
-            tmp1 = tmp1->next; 
-        }else{
-            newHead->insert_node(tmp2->data);
-            tmp2 = tmp2->next;      
-           
-        }
-    }
-    while(tmp1!=nullptr){
-        newHead->insert_node(tmp1->data);
-        tmp1=tmp1->next;
-
-    }
-    while(tmp2!=nullptr){
-        newHead->insert_node(tmp2->data);
-        tmp2=tmp2->next;
-    }
-    return newHead->head;
+bool has_cycle(SinglyLinkedListNode* head) {
+    Vector<int> vec;
 }
