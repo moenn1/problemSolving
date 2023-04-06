@@ -23,6 +23,17 @@ class SinglyLinkedList {
             this->tail = nullptr;
         }
 
+        void insert_node(int node_data) {
+            SinglyLinkedListNode* node = new SinglyLinkedListNode(node_data);
+
+            if (!this->head) {
+                this->head = node;
+            } else {
+                this->tail->next = node;
+            }
+
+            this->tail = node;
+        }
 };
 
 void print_singly_linked_list(SinglyLinkedListNode* node, string sep, ofstream& fout) {
@@ -46,7 +57,7 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
     }
 }
 
-// Complete the insertNodeAtHead function below.
+// Complete the mergeLists function below.
 
 /*
  * For your reference:
@@ -57,9 +68,7 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
  * };
  *
  */
-void printLinkedList(SinglyLinkedListNode* llist, int data) {
-    SinglyLinkedListNode *tmp = llist;
-    while(tmp->next!=nullptr){
-        cout << tmp->data << endl;
-    }
+SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
+
+
 }

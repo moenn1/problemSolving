@@ -23,6 +23,17 @@ class SinglyLinkedList {
             this->tail = nullptr;
         }
 
+        void insert_node(int node_data) {
+            SinglyLinkedListNode* node = new SinglyLinkedListNode(node_data);
+
+            if (!this->head) {
+                this->head = node;
+            } else {
+                this->tail->next = node;
+            }
+
+            this->tail = node;
+        }
 };
 
 void print_singly_linked_list(SinglyLinkedListNode* node, string sep, ofstream& fout) {
@@ -46,7 +57,7 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
     }
 }
 
-// Complete the insertNodeAtHead function below.
+// Complete the compare_lists function below.
 
 /*
  * For your reference:
@@ -57,9 +68,16 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
  * };
  *
  */
-void printLinkedList(SinglyLinkedListNode* llist, int data) {
-    SinglyLinkedListNode *tmp = llist;
-    while(tmp->next!=nullptr){
-        cout << tmp->data << endl;
+bool compare_lists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
+    if(head1==nullptr || head2==nullptr)
+        return false;
+    SinglyLinkedListNode *tmp1 = head1, *tmp2 = head2;
+    while(tmp1!=nullptr && tmp2!=nullptr){
+        if(tmp1->data != tmp2->data) return false;
+        tmp1 = tmp1->next;
+        tmp2 = tmp2->next;
     }
+    if(tmp1!= nullptr || tmp2!= nullptr)
+        return false;
+    return true;
 }

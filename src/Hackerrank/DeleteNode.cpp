@@ -79,20 +79,21 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
 SinglyLinkedListNode* deleteNode(SinglyLinkedListNode* llist, int position) {
     if(llist == nullptr)
         return nullptr;
-    SinglyLinkedListNode* tmp = llist;
-    int i=1; 
-    while(i<position && tmp->next!=nullptr){
-        tmp=tmp->next;
-        i++;
-    }
-    if(tmp->next != nullptr){
-        if(tmp->next->next ==nullptr)
-            free(tmp->next);
-        else{
-            SinglyLinkedListNode* tmp2 = tmp->next->next;
-            free(tmp->next);
+    if(position == 0){
+        SinglyLinkedListNode *tmp=llist, *tmp2=tmp->next;
+        delete tmp;
+        llist = tmp2;
+        return llist;
+    }else{
+        SinglyLinkedListNode *tmp=llist, *tmp2;
+        int i=1;
+        while(tmp->next->next!=nullptr && i<position){
+            tmp = tmp->next;
+            i++;
         }
+            tmp2=tmp->next;
+            tmp->next=tmp->next->next;
+            delete tmp2;
+            return llist;
     }
-    return llist;
-
 }

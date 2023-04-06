@@ -23,16 +23,27 @@ class SinglyLinkedList {
             this->tail = nullptr;
         }
 
+        void insert_node(int node_data) {
+            SinglyLinkedListNode* node = new SinglyLinkedListNode(node_data);
+
+            if (!this->head) {
+                this->head = node;
+            } else {
+                this->tail->next = node;
+            }
+
+            this->tail = node;
+        }
 };
 
-void print_singly_linked_list(SinglyLinkedListNode* node, string sep, ofstream& fout) {
+void print_singly_linked_list(SinglyLinkedListNode* node, string sep) {
     while (node) {
-        fout << node->data;
+        cout << node->data;
 
         node = node->next;
 
         if (node) {
-            fout << sep;
+            cout << sep;
         }
     }
 }
@@ -46,7 +57,11 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
     }
 }
 
-// Complete the insertNodeAtHead function below.
+/*
+ * Complete the 'reversePrint' function below.
+ *
+ * The function accepts INTEGER_SINGLY_LINKED_LIST llist as parameter.
+ */
 
 /*
  * For your reference:
@@ -57,9 +72,12 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
  * };
  *
  */
-void printLinkedList(SinglyLinkedListNode* llist, int data) {
-    SinglyLinkedListNode *tmp = llist;
-    while(tmp->next!=nullptr){
-        cout << tmp->data << endl;
+
+void reversePrint(SinglyLinkedListNode* llist) {
+    if(llist==nullptr){
+        return;
+    }else{
+        reversePrint(llist->next);
+        cout << llist->data << endl;
     }
 }
